@@ -46,4 +46,23 @@ feature "User posts a new question" do
 
     expect(page).to have_content "Title is too short (minimum is 40 characters)"
   end
+
+  scenario "posts an invalid question -- doesn't provide a description" do
+    visit '/questions/new'
+    fill_in "Title", with: "Are capybaras cuter with other animals or alone?"
+
+    click_on "Post Question"
+
+    expect(page).to have_content "Description can't be blank"
+  end
+
+  scenario "posts an invalid question -- provides a description of insufficient length" do
+    visit '/questions/new'
+    fill_in "Title", with: "Are capybaras cuter with other animals or alone?"
+    fill_in "Description", with: "Are capybaras cute?"
+    click_on "Post Question"
+
+    expect(page).to have_content "Description is too short (minimum is 150 characters)"
+  end
+
 end
