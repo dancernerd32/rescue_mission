@@ -13,23 +13,21 @@ feature "User answers another users question" do
 # - I must be presented with errors if I fill out the form incorrectly
 scenario "User provides a valid answer" do
 
-  question = Question.create!(title: "How much wood would a woodchuck chuck if a
+  question = Question.new(title: "How much tree would a woodchuck chuck if a
   woodchuck could chuck wood?", description: "Please tell me about the amount of
   wood that a woodchuck would chuck if a woodchuck could chuck wood. Would he
   chuck all the wood that he could? Would he?")
 
-  visit question_path(question)
+  question.save
 
-  fill_in "Answer", with: "He would chuck all the wood that a woodchuck
+  visit question_path(question)
+  save_and_open_page
+
+  fill_in "Description", with: "He would chuck all the wood that a woodchuck
   could if a woodchuck could chuck wood"
   click_on "Submit Answer"
 
-  expect(page).to have_content "How much wood would a woodchuck chuck if a
-  woodchuck could chuck wood?", "Please tell me about the amount of
-  wood that a woodchuck would chuck if a woodchuck could chuck wood. Would he
-  chuck all the wood that he could? Would he?",
-  "He would chuck all the wood that a woodchuck
-  could if a woodchuck could chuck wood"
+  expect(page).to have_content "He would chuck all the wood that a woodchuck could if a woodchuck could chuck wood"
 end
 
 scenario "User provides an invalid answer - description too short"
