@@ -20,7 +20,7 @@ scenario "User provides a valid answer" do
 
   visit question_path(question)
 
-  fill_in "Answer", with "He would chuck all the wood that a woodchuck
+  fill_in "Answer", with: "He would chuck all the wood that a woodchuck
   could if a woodchuck could chuck wood"
   click_on "Submit Answer"
 

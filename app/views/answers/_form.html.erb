@@ -1,0 +1,18 @@
+<div class="errors">
+  <ul>
+    <% @answer.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+    <% end %>
+  </ul>
+</div>
+
+<%= form_for @answer do |f| %>
+
+<div class="field">
+  <%= f.label :answer %><br>
+  <%= f.text_field :answer %>
+</div>
+<div class="actions">
+  <%= f.submit "Submit Answer"%>
+</div>
+<% end %>
