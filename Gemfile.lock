@@ -52,6 +52,7 @@ GEM
     multi_json (1.10.1)
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
+    orderly (0.0.2)
     pg (0.17.1)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -115,6 +116,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   jquery-rails
+  orderly
   pg
   rails (= 4.1.8)
   rspec-rails
