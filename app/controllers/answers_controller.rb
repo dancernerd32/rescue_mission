@@ -4,6 +4,8 @@ class AnswersController < ApplicationController
     @answer = @question.answers.build(answer_params)
     if @answer.save
       redirect_to question_path(@question)
+    else
+      render 'questions/show'
     end
   end
 

@@ -4,11 +4,21 @@
 </p>
 <h2>User Answers</h2>
 <ul>
-  <%@question.answers.each do |answer|%>
+  <%@question.answers.order(updated_at: :desc).each do |answer|%>
     <li><%=answer.description%></li>
   <%end%>
 </ul>
+
 <h2>Answer this question:</h2>
+
+<div class="errors">
+  <ul>
+    <% @answer.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+    <% end %>
+  </ul>
+</div>
+
 <%=form_for ([@question, @answer]) do |f| %>
   <div>
     <%= f.label :description%>
